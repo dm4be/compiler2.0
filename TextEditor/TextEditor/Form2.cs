@@ -159,8 +159,11 @@ namespace TextEditor
             Lexer lexer = new Lexer();
             List<Token> tokens = lexer.Analyze(inputArea.Text);
 
-            AnalysisForm analysisForm = new AnalysisForm(tokens);
-            analysisForm.Show();
+            outputArea.Clear();
+            foreach (var token in tokens)
+            {
+                outputArea.AppendText($"{token.Code} - {token.Type} - {token.Lexeme} - {token.Position}\n");
+            }
         }
     }
 }
